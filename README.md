@@ -12,7 +12,7 @@
 
 ## Step 1: Ensure all the necessary plugins are installed in Jenkins Master
 - [ ] Parameterized trigger plugin
-- [ ] Gitlab plugin
+- [ ] Gitlab plugin not neccesary when using github
 - [ ] Docker Pipeline
 - [ ] Pipeline: AWS steps
 - [ ] SonarQube Scanner
@@ -31,8 +31,9 @@ $ sudo usermod -a -G docker ubuntu
 $ sudo docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 $ sudo apt install maven
 
-NB: the java version on agent has to be the same with the server
+
 ```
+#NB: java version on agent has to be the same with the server
 
 ## Step 4: Add necessary credentials
 - [ ] Generate Sonarqube token of type "global analysis token" and add it as Jenkins credential of type "secret text"
@@ -40,10 +41,13 @@ NB: the java version on agent has to be the same with the server
 - [ ] Add Gitlab credentials 
 - [ ] Add Build server credentials for Jenkins master to connect
 
+# NB: select manually trusted key verification when adding an agent 
+
 ## Step 5: Enable Sonarqube webhook for Quality Gates & Install dependency-check plugin
 - [ ] Generate webhook & add the Jenkins SERVER/DOMAIN as follows - http://{SERVER/DOMIAN}:8080/sonarqube-webhook/
-      - [ ] The webhook is under administration -> configuration  NB: the secret can be ingored 
-      - [ ] NB: this will allow jenkins to connect to sonar when on it gets to Quality gate stage
+
+    - [ ] The webhook is under administration -> configuration  NB: the secret can be ingored 
+    - [ ] NB: this will allow jenkins to connect to sonar when on it gets to Quality gate stage
 
 - [ ] - dependency installation should be installed go to  Administration -> Market Place then type dependency
 - [ ] - under jenkins update the sonar server instance name or domain for jenkins to be able to scan

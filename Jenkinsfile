@@ -1,4 +1,3 @@
-
 pipeline {
   agent { label 'build' }
    environment { 
@@ -9,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git branch: 'main', credentialsId: 'GitlabCred', url: 'https://github.com/ttendaim/springboot-pipeline.git'
+        git branch: 'main', credentialsId: 'Gitlab', url: 'https://github.com/ttendaim/springboot-pipeline.git'
       }
     }
   
