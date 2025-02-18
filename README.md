@@ -1,10 +1,10 @@
 
-<html><body><h1 style="font-size:50px;color:blue;">Tendai | <font style="color:red;">  | <font style="color:green;"> +8000000000/h1>
+<html><body><h1 style="font-size:50px;color:blue;">Tendai | <font style="color:red;">  | <font style="color:green;"> 
 
 </body></html>
 
 
-# PRODUCTION GRADE DEVSECOPS CICD Pipeline
+# DEVSECOPS CICD Pipeline
 
 ## Prereq: Create 2 EC2 servers
 - [ ] Build server with 15GB storage - t2.mirco
@@ -29,6 +29,9 @@ $ sudo apt update
 $ sudo apt install -y docker.io
 $ sudo usermod -a -G docker ubuntu
 $ sudo docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
+$ sudo apt install maven
+
+NB: the java version on agent has to be the same with the server
 ```
 
 ## Step 4: Add necessary credentials
@@ -38,7 +41,13 @@ $ sudo docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 - [ ] Add Build server credentials for Jenkins master to connect
 
 ## Step 5: Enable Sonarqube webhook for Quality Gates & Install dependency-check plugin
-- [ ] Generate webhook & add the Jenkins URL as follows - http://URL:8080/sonarqube-webhook/
+- [ ] Generate webhook & add the Jenkins SERVER/DOMAIN as follows - http://{SERVER/DOMIAN}:8080/sonarqube-webhook/
+      - [ ] The webhook is under administration -> configuration  NB: the secret can be ingored 
+      - [ ] NB: this will allow jenkins to connect to sonar when on it gets to Quality gate stage
+
+- [ ] - dependency installation should be installed go to  Administration -> Market Place then type dependency
+- [ ] - under jenkins update the sonar server instance name or domain for jenkins to be able to scan
+
 
 
 
